@@ -41,6 +41,19 @@ int main() {
                 cout << entry->d_name << endl;
             }
             closedir(dir);
+        }
+        else if(command == "pwd"){
+            //imprimir o caminho do diretorio atual
+            char* cwd = new char[PATH_MAX];
+
+
+            if(getcwd(cwd, PATH_MAX)!= NULL){
+                std::cout << cwd << std::endl;
+            }else{
+                std::cerr << "Error getting current directory" << std::endl;
+            }
+            delete[] cwd;
+
         } else {
             // se o comando não for reconhecido, mostrar uma mensagem de erro
             cout << "bash: " << command << ": command not found" << endl;
